@@ -1,0 +1,13 @@
+spring:
+  test:
+    database:
+      replace: none # 내장 DB가 아닌, Docker 를 띄우므로 다른 테스트에서도 Container 를 공유할 수 있다
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:mysql:8:///
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update # 생성&드랍으로 하게 되면 혹시 모를 개발, 운영 DB에 영향을 미칠 수 있다.
